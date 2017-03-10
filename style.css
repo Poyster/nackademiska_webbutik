@@ -1,0 +1,42 @@
+td img {
+    width: 150px;
+    height: 150px;
+}
+
+#ngview {
+    margin-top: 100px;
+}
+
+#prodesc {
+    width: 350px;
+}
+
+ul.dropdown-cart{
+    min-width:250px;
+}
+ul.dropdown-cart li .item {
+    display: block;
+    padding: 3px 10px;
+    margin: 3px 0;
+}
+#srch-term{
+    margin-left: 50px;
+}
+
+#loginButton {
+    margin-left: 100px;
+    width: 120px;
+}
+
+#cartIMG {
+    width: 25px;
+    height: 25px;
+}
+
+#iLager {
+    width: 75px;
+}
+
+#prisTD {
+     width: 75px;
+ }

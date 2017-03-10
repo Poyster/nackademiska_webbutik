@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nackademiska Webbutiken</title>
+    <meta charset="UTF-8">
+    <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.service.js"></script>
+    <script src="app/app.controller.js"></script>
+
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.service.js"></script>
+    <script src="app/login/login.controller.js"></script>
+
+    <script src="app/category/category.module.js"></script>
+    <script src="app/category/category.service.js"></script>
+    <script src="app/category/category.controller.js"></script>
+
+    <script src="app/product/product.module.js"></script>
+    <script src="app/product/product.service.js"></script>
+    <script src="app/product/product.controller.js"></script>
+    <script src="app/product/product-details.controller.js"></script>
+    <script src="app/cart/cart.module.js"></script>
+    <script src="app/cart/cart.service.js"></script>
+    <script src="app/cart/cart.controller.js"></script>
+
+
+</head>
+<body ng-app="app" class="text-center">
+
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="appController">
+    <div class="container">
+        <ul class="nav nav-tabs nav-justified">
+
+            <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+
+            <li><div ng-controller="categoryController" >
+                <span uib-dropdown on-toggle="toggled(open)">
+      <a href id="simple-dropdown" uib-dropdown-toggle >Kategorier <span class="caret"></span></a>
+      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+        <li ng-repeat="category in categories" ng-click="categoryClicked(category.id)">
+          <a href >{{ category.name }}</a>
+        </li>
+      </ul>
+    </span>
+            </div></li>
+
+          <!--  <li><a href="/">Kategori1</a></li>
+            <li><a href="/">Kategori2</a></li>
+            <li><a href="/">Kategori3</a></li>
+            <li><a href="/">Kategori4</a></li>-->
+
+            <li><form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" ng-model="$parent.searchBox" class="form-control" placeholder="Sök produkt" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <a class="btn btn-default" role="button" ng-href="/search"><span class="glyphicon glyphicon-search"></span> Sök</a>
+                    </div>
+                </div>
+            </form>
+            </li>
+            <li>
+                <a href="/login" id="loginButton" class="btn btn-info" role="button"><span class="glyphicon glyphicon-log-in"></span> Logga in</a>
+            </li>
+
+            <li><div ng-controller="productController" >
+                <span uib-dropdown on-toggle="toggled(open)"><a href id="simple-dropd" uib-dropdown-toggle><span class="glyphicon glyphicon-shopping-cart"></span> Varor <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu>
+                    <li ng-repeat="product in products">
+                  <span class="item">
+                    <span class="item-left">
+                        <img id="cartIMG"src="{{product.imageUrl}}"/>
+                        <span class="item-info">
+                            <span>{{product.name | limitTo: 10}} - </span>
+                            <span>{{product.price}} kr</span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                        <button class="btn btn-xs btn-danger pull-right">x</button>
+                    </span>
+                </span>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a class="text-center" href="/cart" )>Gå till kundvagn</a></li>
+                </ul>
+                </span>
+            </div>
+            </li>
+
+
+        </ul>
+    </div>
+</nav>
+
+<div ng-view id="ngview"></div>
+
+
+
+<footer>
+    <p>&copy; 2017 Nackademiska Webbutiken. All rights kind of reserved.</p>
+</footer>
+
+</body>
+</html>

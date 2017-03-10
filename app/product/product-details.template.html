@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr >
+                    <th>Produkt</th>
+                    <th>Bild</th>
+                    <th>Pris</th><br>
+                    <th>Beskrivning</th>
+                    <th>I lager</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-click="productClickedInDetails(product.id)">
+                    <td>{{ product.name }}</td>
+                    <td><img src="{{ product.imageUrl }}"></td>
+                    <td>{{ product.price }} kr</td>
+                    <td id="prodesc">{{ product.description }}</td>
+                    <td ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
+                    <td class="text-danger" ng-if="product.unitsInStock < 0">Varan är slut i lager</td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
