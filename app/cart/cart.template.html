@@ -1,1 +1,37 @@
-<h1>KUNDVAGN!</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+
+            <h1>Kundvagn</h1>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr >
+                    <th>Produkt</th>
+                    <th>Bild</th>
+                    <th>Pris</th><br>
+                    <th>Beskrivning</th>
+                    <th>I lager</th>
+                </tr>
+                </thead>
+
+                <tbody ng-controller="cartController">
+                <tr ng-repeat="product in productsCart">
+                    <td>{{ product.name }}</td>
+                    <td><img src="{{ product.imageUrl }}"></td>
+                    <td>{{ product.price }} kr</td>
+                    <td id="prodesc">{{ product.description }}</td>
+                    <td ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
+                    <td class="text-danger" ng-if="product.unitsInStock <= 0">Varan är slut i lager</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+            <a ng-click="open()" id="orderButton" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-log-in"></span> Beställ</a><br><br>
+
+
+
+        </div>
+    </div>
+</div>

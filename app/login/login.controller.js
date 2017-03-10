@@ -8,7 +8,7 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
             if(!loginService.isLoggedIn()){
                 $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
             }else{
-                $location.path("/");
+                $location.path("/cart");
             }
         };
     }]);
