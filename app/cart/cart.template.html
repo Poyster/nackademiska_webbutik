@@ -15,14 +15,22 @@
                 </tr>
                 </thead>
 
-                <tbody ng-controller="cartController">
+                <tbody ng-controller="cartController" ng-init="productsInCart.total={}">
                 <tr ng-repeat="product in productsCart">
                     <td>{{ product.name }}</td>
                     <td><img src="{{ product.imageUrl }}"></td>
-                    <td>{{ product.price }} kr</td>
+                    <td ng-init="productsInCart.total.price = productsInCart.total.price + product.price">{{ product.price }} kr</td>
                     <td id="prodesc">{{ product.description }}</td>
                     <td ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
                     <td class="text-danger" ng-if="product.unitsInStock <= 0">Varan är slut i lager</td>
+
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td><h4>Totalt pris:</h4></td>
+                    <td><h4>{{productsInCart.total.price}} kr</h4></td>
+                    <td> </td>
+                    <td> </td>
                 </tr>
 
                 </tbody>

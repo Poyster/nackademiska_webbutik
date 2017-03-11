@@ -1,14 +1,23 @@
 angular.module("login").controller("loginController", ["$scope","$location", "loginService",
     function ($scope,$location, loginService) {
         $scope.text = "";
+        $scope.user = {};
 
         $scope.login = function(){
-            loginService.login($scope.email, $scope.password)
 
-            if(!loginService.isLoggedIn()){
-                $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
-            }else{
-                $location.path("/cart");
-            }
+            var userinfo = {
+                email: $scope.user.email,
+                password: $scope.user.password};
+
+            loginService.login(userinfo).then(function () {
+
+                console.log(loginService.isLoggedIn());
+
+                if(!loginService.isLoggedIn()){
+                    $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
+                }else{
+                    $location.path("/cart");
+                }
+        });
         };
     }]);

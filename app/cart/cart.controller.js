@@ -16,7 +16,9 @@ angular.module("cart").controller("cartController", ["$scope","$rootScope","$loc
     $rootScope.productsCart = productsInCart;
     $scope.productToCartClicked = function (product) {
         productsInCart.push(product);
+
     };
+
 
     $scope.clickToCart = function () {
 

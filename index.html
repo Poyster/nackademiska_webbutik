@@ -20,6 +20,7 @@
     <script src="app/login/login.module.js"></script>
     <script src="app/login/login.service.js"></script>
     <script src="app/login/login.controller.js"></script>
+    <script src="app/login/login-create.controller.js"></script>
 
     <script src="app/category/category.module.js"></script>
     <script src="app/category/category.service.js"></script>
@@ -33,7 +34,6 @@
     <script src="app/cart/cart.module.js"></script>
     <script src="app/cart/cart.service.js"></script>
     <script src="app/cart/cart.controller.js"></script>
-
 
 
 
@@ -73,7 +73,7 @@
 
             <li><div ng-controller="cartController" >
                 <span uib-dropdown on-toggle="toggled(open)"><a href id="simple-dropd" uib-dropdown-toggle><span class="glyphicon glyphicon-shopping-cart"></span> Varor <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu>
+                <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu ng-init="productsInCart.total = {}">
                     <li ng-repeat="product in productsCart">
                       <span class="item">
                         <span class="item-left">
@@ -81,12 +81,17 @@
                             <span class="item-info">
                                 <span>{{product.name | limitTo: 10}} - </span>
                                 <span>{{product.price}} kr</span>
+                                <span ng-init="productsInCart.total.price = productsInCart.total.price + product.price"></span>
                             </span>
                         </span>
                         <span class="item-right">
                             <button class="btn btn-xs btn-danger pull-right">x</button>
                         </span>
                       </span>
+                    </li>
+                    <li>
+                        <span>Totalt pris:</span>
+                        <span>{{productsInCart.total.price}} kr</span>
                     </li>
                     <li class="divider"></li>
                     <li><a class="text-center" ng-click="clickToCart()">Gå till kundvagn</a></li>
