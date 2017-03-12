@@ -74,7 +74,7 @@
             <li><div ng-controller="cartController" >
                 <span uib-dropdown on-toggle="toggled(open)"><a href id="simple-dropd" uib-dropdown-toggle><span class="glyphicon glyphicon-shopping-cart"></span> Varor <span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu ng-init="productsInCart.total = {}">
-                    <li ng-repeat="product in productsCart">
+                    <li ng-repeat="product in productsCart track by $index">
                       <span class="item">
                         <span class="item-left">
                             <img id="cartIMG"src="{{product.imageUrl}}"/>
@@ -85,7 +85,7 @@
                             </span>
                         </span>
                         <span class="item-right">
-                            <button class="btn btn-xs btn-danger pull-right">x</button>
+                            <button class="btn btn-xs btn-danger pull-right" ng-click="removeItem($index)">x</button>
                         </span>
                       </span>
                     </li>

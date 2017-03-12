@@ -33,6 +33,14 @@ ul.dropdown-cart li .item {
     height: 25px;
 }
 
+#totalp {
+    width: 150px;
+    background-color: #46b8da;
+}
+#tot {
+    background-color: #46b8da;
+}
+
 #iLager {
     width: 75px;
 }

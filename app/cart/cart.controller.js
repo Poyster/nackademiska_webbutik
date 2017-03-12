@@ -30,11 +30,10 @@ angular.module("cart").controller("cartController", ["$scope","$rootScope","$loc
 
     };
 
- /*   $scope.open = function () {
-        var modalInstance = $modal.open({
-            templateUrl: 'popup.html',
-        });
-    }*/
+    $scope.removeItem = function (product) {
+        $scope.productsCart.splice(product, 1);
+    }
+
 
 
 }]);

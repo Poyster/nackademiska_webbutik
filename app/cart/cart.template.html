@@ -16,7 +16,7 @@
                 </thead>
 
                 <tbody ng-controller="cartController" ng-init="productsInCart.total={}">
-                <tr ng-repeat="product in productsCart">
+                <tr ng-repeat="product in productsCart track by $index">
                     <td>{{ product.name }}</td>
                     <td><img src="{{ product.imageUrl }}"></td>
                     <td ng-init="productsInCart.total.price = productsInCart.total.price + product.price">{{ product.price }} kr</td>
@@ -25,10 +25,10 @@
                     <td class="text-danger" ng-if="product.unitsInStock <= 0">Varan är slut i lager</td>
 
                 </tr>
-                <tr>
+                <tr id="tot">
                     <td> </td>
-                    <td><h4>Totalt pris:</h4></td>
-                    <td><h4>{{productsInCart.total.price}} kr</h4></td>
+                    <td ><h4>Totalt pris:</h4></td>
+                    <td id=totalp"><h4>{{productsInCart.total.price}} kr</h4></td>
                     <td> </td>
                     <td> </td>
                 </tr>
@@ -36,7 +36,7 @@
                 </tbody>
 
             </table>
-            <a ng-click="open()" id="orderButton" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-log-in"></span> Beställ</a><br><br>
+            <a id="orderButton" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-ok"></span> Beställ</a><br><br>
 
 
 
