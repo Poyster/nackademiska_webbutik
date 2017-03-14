@@ -44,9 +44,14 @@
     <div class="container">
         <ul class="nav nav-tabs nav-justified">
 
-            <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li id="homeButton"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
 
             <li><div ng-controller="categoryController" >
+              <!--  <div class="btn-group" uib-dropdown is-open="status.isopen">
+                    <a id="single-button" type="button" class="btn btn-lg btn-info" uib-dropdown-toggle>
+                        Kategorier <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">-->
                 <span uib-dropdown on-toggle="toggled(open)">
       <a href id="simple-dropdown" uib-dropdown-toggle >Kategorier <span class="caret"></span></a>
       <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
@@ -67,31 +72,36 @@
                 </div>
             </form>
             </li>
-            <li>
-                <a href="/login" id="loginButton" class="btn btn-info" role="button"><span class="glyphicon glyphicon-log-in"></span> Logga in</a>
+            <li><form class="navbar-form">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                <a href="/login" id="loginButton" class="btn btn-default" role="button"><span class="glyphicon glyphicon-log-in"></span> Logga in</a>
+                    </div>
+                </div>
+            </form>
             </li>
 
             <li><div ng-controller="cartController" >
-                <span uib-dropdown on-toggle="toggled(open)"><a href id="simple-dropd" uib-dropdown-toggle><span class="glyphicon glyphicon-shopping-cart"></span> Varor <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu ng-init="productsInCart.total = {}">
+
+                <span uib-dropdown on-toggle="toggled(open)" auto-close="outsideClick"><a href id="simple-dropd" uib-dropdown-toggle><span class="glyphicon glyphicon-shopping-cart"></span> Varor <span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-cart" uib-dropdown-menu aria-labelledby="simple-dropd">
                     <li ng-repeat="product in productsCart track by $index">
                       <span class="item">
                         <span class="item-left">
-                            <img id="cartIMG"src="{{product.imageUrl}}"/>
+                            <img id="cartIMG" ng-src="{{product.imageUrl}}"/>
                             <span class="item-info">
                                 <span>{{product.name | limitTo: 10}} - </span>
                                 <span>{{product.price}} kr</span>
-                                <span ng-init="productsInCart.total.price = productsInCart.total.price + product.price"></span>
+                                <span> - {{product.quantity}} st</span>
+
                             </span>
                         </span>
                         <span class="item-right">
+
+                            <span>{{}}</span>
                             <button class="btn btn-xs btn-danger pull-right" ng-click="removeItem($index)">x</button>
                         </span>
                       </span>
-                    </li>
-                    <li>
-                        <span>Totalt pris:</span>
-                        <span>{{productsInCart.total.price}} kr</span>
                     </li>
                     <li class="divider"></li>
                     <li><a class="text-center" ng-click="clickToCart()">Gå till kundvagn</a></li>
