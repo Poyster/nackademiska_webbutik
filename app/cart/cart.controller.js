@@ -1,18 +1,18 @@
 var productsInCart = [];
-var productsInOrder = [];
+
 
 angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$location", "productService", "loginService", "cartService", function ($scope, $rootScope, $location, productService, loginService, cartService) {
 
+    $scope.orderDoneText = "";
 
     productService.getProducts().then(function (response) {
         $scope.products = response.data;
     });
 
-    /*productService.getProductById().then(function (response) {
-     productsInCart = response.data;
-     });
-     */
-    $rootScope.productsOrder = productsInOrder;
+    $scope.emptyProductCart = function () {
+        $rootScope.productsCart = [];
+    };
+
     $rootScope.productsCart = productsInCart;
 
     $scope.productToCartClicked = function (product) {
@@ -60,16 +60,39 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
 
     $scope.sendOrder = function () {
 
+        var customerId = loginService.customerIdAfterLogin();
+        var productsInOrder = $scope.productsCart;
+        var productObj = {};
+
+        var productIdAndQuantityToOrder = [];
+
+        angular.forEach(productsInOrder, function (productOrd) {
+            productObj.productId = productOrd.id;
+            productObj.quantity = productOrd.quantity;
+            productIdAndQuantityToOrder.push(productObj);
+            productObj = {};
+        });
+
         var newOrder = {
 
-            //bryt ner productsCart till en ny array som innehåller quantity och productId. Skicka med denna.
-            products: cartService.productIdAndQuantity(),
-            customerId: loginService.customerIdAfterLogin()
+            customerId: customerId,
+            products: productIdAndQuantityToOrder
+    };
 
-        };
 
-        console.log(cartService.productIdAndQuantity());
-        cartService.sendOrder(newOrder)
+        console.log(newOrder.customerId);
+        console.log(newOrder.products);
+        console.log(newOrder);
+        cartService.sendOrder(newOrder).then(function successCallBack() {
+            $scope.showmeSuccess = true;
+            $scope.orderDoneText = "Tack för ditt köp! Inom kort får du hem en faktura i brevlådan."
+            $scope.emptyProductCart();
+
+        },function errorCallBack() {
+            $scope.showmeWrong = true;
+            $scope.orderDoneText = "Din order skickades inte, var vänlig försök igen."
+
+        });
 
     };
 

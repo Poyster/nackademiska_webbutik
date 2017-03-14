@@ -41,9 +41,10 @@
             </table>
 
 
-                <a href="" id="orderButton" class="btn btn-success btn-lg" role="button" ng-click="showme=true; sendOrder()"><span class="glyphicon glyphicon-ok"></span> Beställ</a><br><br>
+                <a href="" id="orderButton" class="btn btn-success btn-lg" role="button" ng-click="sendOrder()"><span class="glyphicon glyphicon-ok"></span> Beställ</a><br><br>
                 <div id="wrap" class="wrapper">
-                 <h2 ng-show="showme">Tack för ditt köp!<br> Inom kort får du hem en faktura i brevlådan</h2>
+                    <h2 ng-show="showmeSuccess">{{ orderDoneText }}</h2>
+                    <h2 ng-show="showmeWrong">{{ orderDoneText }}</h2>
 
                 </div>
 
