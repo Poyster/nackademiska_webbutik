@@ -80,9 +80,6 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
     };
 
 
-        console.log(newOrder.customerId);
-        console.log(newOrder.products);
-        console.log(newOrder);
         cartService.sendOrder(newOrder).then(function successCallBack() {
             $scope.showmeSuccess = true;
             $scope.orderDoneText = "Tack för ditt köp! Inom kort får du hem en faktura i brevlådan."
@@ -95,6 +92,7 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
         });
 
     };
+
 
 
 }]);

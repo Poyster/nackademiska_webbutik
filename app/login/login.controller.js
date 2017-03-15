@@ -3,6 +3,8 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
         $scope.text = "";
         $scope.user = {};
 
+
+
         $scope.login = function(){
 
             var userinfo = {
@@ -17,7 +19,11 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
                     $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
                 }else{
                     $location.path("/cart");
+
                 }
         });
         };
+
+
+
     }]);
