@@ -15,11 +15,9 @@ angular.module("login").factory("loginService",["$http", function ($http) {
         login: function (user) {
 
             return $http.post("http://nackbutik.azurewebsites.net/api/customer/login/", user).then(function (response) {
-                            console.log(response.data);
+
                             isLoggedIn = true;
                             customerIdAfterLogin = response.data.customerId;
-                            console.log(customerIdAfterLogin);
-
                 })
 
             },

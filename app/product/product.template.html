@@ -1,35 +1,38 @@
 <div class="container">
     <div class="row">
-     <div class="col-md-offset-2 col-md-7">
+        <div class="col-md-offset-2 col-md-7">
 
 
-        <table class="table table-bordered">
-            <thead>
-            <tr >
-                <th>Produkt</th>
-                <th>Bild</th>
-                <th>Pris</th>
-                <th>I lager</th>
-                <th>Information</th>
-            </tr>
-            </thead>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th>Bild</th>
+                    <th>Pris</th>
+                    <th>I lager</th>
+                    <th>Information</th>
+                </tr>
+                </thead>
 
-            <tbody ng-controller="cartController">
-            <tr ng-repeat="product in products | filter: searchBox" ng-click="productClicked(product.id)">
-                <td>{{product.name}}</td>
-                <td><img ng-src="{{product.imageUrl}}"></td>
-                <td id="prisTD">{{product.price}} kr</td>
-                <td id="iLager" ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
-                <td class="text-danger" ng-if="product.unitsInStock <= 0">Varan är slut i lager</td>
+                <tbody ng-controller="cartController">
+                <tr ng-repeat="product in products | filter: searchBox" ng-click="productClicked(product.id)">
+                    <td>{{product.name}}</td>
+                    <td><img ng-src="{{product.imageUrl}}"></td>
+                    <td id="prisTD">{{product.price}} kr</td>
+                    <td id="iLager" ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
+                    <td class="text-danger" ng-if="product.unitsInStock <= 0">Varan är slut i lager</td>
 
-                <td class="not-clickable-cell" ng-click="$event.stopPropagation()"><br>
-                    <button class="btn btn-success" ng-disabled="product.unitsInStock == 0" ng-click="productToCartClicked(product)">Lägg till i kundvagn</button>
-                    <br><br><br> Klicka på en produkt för att se ytterligare information</td>
-            </tr>
+                    <td class="not-clickable-cell" ng-click="$event.stopPropagation()"><br>
+                        <button class="btn btn-success" ng-disabled="product.unitsInStock == 0"
+                                ng-click="productToCartClicked(product)">Lägg till i kundvagn
+                        </button>
+                        <br><br><br> Klicka på en produkt för att se ytterligare information
+                    </td>
+                </tr>
 
-            </tbody>
+                </tbody>
 
-        </table>
-     </div>
+            </table>
+        </div>
     </div>
 </div>
