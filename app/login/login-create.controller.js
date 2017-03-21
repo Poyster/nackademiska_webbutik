@@ -22,6 +22,8 @@ angular.module("login").controller("loginCreateController", ["$scope","$routePar
                     $location.path("/login");
                 });
 
-            }
+            };
+
+
 
     }]);

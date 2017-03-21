@@ -3,6 +3,7 @@
 angular.module("login").factory("loginService",["$http", function ($http) {
     var isLoggedIn = false;
     var customerIdAfterLogin;
+    var customerNameAfterLogin;
 
 
     return {
@@ -18,16 +19,26 @@ angular.module("login").factory("loginService",["$http", function ($http) {
 
                             isLoggedIn = true;
                             customerIdAfterLogin = response.data.customerId;
-                })
+                            customerNameAfterLogin = response.data.firstName + " " + response.data.lastName;
+                },function errorCallback(response) {
+
+                }
+            )
 
             },
+        logout: function () {
+            isLoggedIn = false;
+            customerIdAfterLogin = null;
+        },
         isLoggedIn: function () {
             return isLoggedIn;
 
         },
         customerIdAfterLogin: function () {
             return customerIdAfterLogin;
-
+        },
+        customerNameAfterLogin: function () {
+            return customerNameAfterLogin;
         }
     };
 }]);

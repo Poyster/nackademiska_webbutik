@@ -80,10 +80,11 @@
                 <form class="navbar-form">
                     <div class="input-group">
                         <div class="input-group-btn" ng-controller="loginController">
-                            <a href="/login" id="loginButton" class="btn btn-default" role="button"><span
-                                    class="glyphicon glyphicon-log-in"></span> Logga in</a>
+                            <a ng-hide="isLoggedIn()" href="/login" id="loginButton" class="btn btn-default" role="button"><span class="glyphicon glyphicon-log-in"></span> Logga in</a>
+                            <a ng-show="isLoggedIn()" href="#" class="btn btn-default" id="welc">Välkommen {{ customerName() }} </a>
+                            <a ng-show="isLoggedIn()" href="#" ng-click="logout()" class="btn btn-default" role="button"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a>
+                    </div>
 
-                        </div>
                     </div>
                 </form>
             </li>

@@ -3,6 +3,9 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
         $scope.text = "";
         $scope.user = {};
 
+        $scope.customerName = function () {
+            return loginService.customerNameAfterLogin();
+        };
 
 
         $scope.login = function(){
@@ -13,8 +16,6 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
 
             loginService.login(userinfo).then(function () {
 
-                console.log(loginService.isLoggedIn());
-
                 if(!loginService.isLoggedIn()){
                     $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
                 }else{
@@ -22,6 +23,14 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
 
                 }
         });
+        };
+
+        $scope.logout = function () {
+            $location.path("/");
+            return loginService.logout()
+        };
+        $scope.isLoggedIn = function () {
+            return loginService.isLoggedIn()
         };
 
 
