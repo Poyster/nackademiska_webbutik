@@ -19,10 +19,10 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
 
         var order = false;
 
-        if(productsInCart.length == 0) {
+        if (productsInCart.length == 0) {
             product.quantity = 1;
             productsInCart.push(product);
-        } else{
+        } else {
             for (var i = 0; i < productsInCart.length; i++) {
                 if (product.name == productsInCart[i].name) {
                     order = true;
@@ -30,13 +30,13 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
                     i = productsInCart.length;
 
                 }
-                }
+            }
 
-            if (!order){
+            if (!order) {
                 product.quantity = 1;
                 productsInCart.push(product);
             }
-            }
+        }
 
         console.log(product.quantity);
 
@@ -77,7 +77,7 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
 
             customerId: customerId,
             products: productIdAndQuantityToOrder
-    };
+        };
 
 
         cartService.sendOrder(newOrder).then(function successCallBack() {
@@ -85,14 +85,13 @@ angular.module("cart").controller("cartController", ["$scope", "$rootScope", "$l
             $scope.orderDoneText = "Tack för ditt köp! Inom kort får du hem en faktura i brevlådan."
             $scope.emptyProductCart();
 
-        },function errorCallBack() {
+        }, function errorCallBack() {
             $scope.showmeWrong = true;
             $scope.orderDoneText = "Din order skickades inte, var vänlig försök igen."
 
         });
 
     };
-
 
 
 }]);

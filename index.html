@@ -36,22 +36,21 @@
     <script src="app/cart/cart.controller.js"></script>
 
 
+
+
 </head>
 <body ng-app="app" class="text-center">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav id="navb" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
+
         <ul class="nav nav-tabs nav-justified">
 
             <li id="homeButton"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
 
             <li>
                 <div ng-controller="categoryController">
-                    <!--  <div class="btn-group" uib-dropdown is-open="status.isopen">
-                          <a id="single-button" type="button" class="btn btn-lg btn-info" uib-dropdown-toggle>
-                              Kategorier <span class="caret"></span>
-                          </a>
-                          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">-->
+
                     <span uib-dropdown on-toggle="toggled(open)">
       <a href id="simple-dropdown" uib-dropdown-toggle>Kategorier <span class="caret"></span></a>
       <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
@@ -116,6 +115,7 @@
                     </li>
                     <li class="divider"></li>
                     <li><a class="text-center" ng-click="clickToCart()">Gå till kundvagn</a></li>
+
                 </ul>
                 </span>
                 </div>

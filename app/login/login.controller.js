@@ -1,5 +1,5 @@
-angular.module("login").controller("loginController", ["$scope","$location", "loginService",
-    function ($scope,$location, loginService) {
+angular.module("login").controller("loginController", ["$scope", "$location", "loginService",
+    function ($scope, $location, loginService) {
         $scope.text = "";
         $scope.user = {};
 
@@ -8,21 +8,22 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
         };
 
 
-        $scope.login = function(){
+        $scope.login = function () {
 
             var userinfo = {
                 email: $scope.user.email,
-                password: $scope.user.password};
+                password: $scope.user.password
+            };
 
             loginService.login(userinfo).then(function () {
 
-                if(!loginService.isLoggedIn()){
+                if (!loginService.isLoggedIn()) {
                     $scope.text = "Fel användarnamn eller lösenord. vänligen försök igen."
-                }else{
+                } else {
                     $location.path("/cart");
 
                 }
-        });
+            });
         };
 
         $scope.logout = function () {
@@ -32,7 +33,6 @@ angular.module("login").controller("loginController", ["$scope","$location", "lo
         $scope.isLoggedIn = function () {
             return loginService.isLoggedIn()
         };
-
 
 
     }]);

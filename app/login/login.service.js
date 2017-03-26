@@ -1,6 +1,4 @@
-
-
-angular.module("login").factory("loginService",["$http", function ($http) {
+angular.module("login").factory("loginService", ["$http", function ($http) {
     var isLoggedIn = false;
     var customerIdAfterLogin;
     var customerNameAfterLogin;
@@ -8,7 +6,7 @@ angular.module("login").factory("loginService",["$http", function ($http) {
 
     return {
 
-        createLogin: function(customer) {
+        createLogin: function (customer) {
             return $http.post("http://nackbutik.azurewebsites.net/api/customer/", customer);
 
         },
@@ -17,15 +15,15 @@ angular.module("login").factory("loginService",["$http", function ($http) {
 
             return $http.post("http://nackbutik.azurewebsites.net/api/customer/login/", user).then(function (response) {
 
-                            isLoggedIn = true;
-                            customerIdAfterLogin = response.data.customerId;
-                            customerNameAfterLogin = response.data.firstName + " " + response.data.lastName;
-                },function errorCallback(response) {
+                    isLoggedIn = true;
+                    customerIdAfterLogin = response.data.customerId;
+                    customerNameAfterLogin = response.data.firstName + " " + response.data.lastName;
+                }, function errorCallback(response) {
 
                 }
             )
 
-            },
+        },
         logout: function () {
             isLoggedIn = false;
             customerIdAfterLogin = null;

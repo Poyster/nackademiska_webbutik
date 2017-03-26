@@ -6,10 +6,11 @@
 
             <table class="table table-bordered">
                 <thead>
-                <tr >
+                <tr>
                     <th>Produkt</th>
                     <th>Bild</th>
-                    <th>Pris</th><br>
+                    <th>Pris</th>
+                    <br>
                     <th>Antal produkter</th>
                     <th>Beskrivning</th>
                     <th>I lager</th>
@@ -20,7 +21,9 @@
                 <tr ng-repeat="product in productsCart track by $index">
                     <td>{{ product.name }}</td>
                     <td><img ng-src="{{ product.imageUrl }}"></td>
-                    <td ng-init="productsInCart.total.price = productsInCart.total.price + product.price * product.quantity">{{ product.price }} kr</td>
+                    <td ng-init="productsInCart.total.price = productsInCart.total.price + product.price * product.quantity">
+                        {{ product.price }} kr
+                    </td>
                     <td>{{product.quantity}} st</td>
                     <td id="prodesc">{{ product.description }}</td>
                     <td ng-if="product.unitsInStock > 0">{{ product.unitsInStock }} st</td>
@@ -29,11 +32,11 @@
 
                 </tr>
                 <tr id="tot">
-                    <td> </td>
-                    <td ><h5>Totalt pris:</h5></td>
+                    <td></td>
+                    <td><h5>Totalt pris:</h5></td>
                     <td id="totalp"><h5>{{productsInCart.total.price}} kr</h5></td>
-                    <td> </td>
-                    <td> </td>
+                    <td></td>
+                    <td></td>
                 </tr>
 
                 </tbody>
@@ -41,15 +44,13 @@
             </table>
 
 
-                <a href="" id="orderButton" class="btn btn-success btn-lg" role="button" ng-click="sendOrder()"><span class="glyphicon glyphicon-ok"></span> Beställ</a><br><br>
-                <div id="wrap" class="wrapper">
-                    <h2 ng-show="showmeSuccess">{{ orderDoneText }}</h2>
-                    <h2 ng-show="showmeWrong">{{ orderDoneText }}</h2>
+            <a href="" id="orderButton" class="btn btn-success btn-lg" role="button" ng-click="sendOrder()"><span
+                    class="glyphicon glyphicon-ok"></span> Beställ</a><br><br>
+            <div id="wrap" class="wrapper">
+                <h2 ng-show="showmeSuccess">{{ orderDoneText }}</h2>
+                <h2 ng-show="showmeWrong">{{ orderDoneText }}</h2>
 
-                </div>
-
-
-
+            </div>
 
 
         </div>

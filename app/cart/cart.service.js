@@ -1,11 +1,11 @@
-angular.module("cart").factory("cartService",["$http",function ($http) {
+angular.module("cart").factory("cartService", ["$http", function ($http) {
 
 
     return {
 
-        sendOrder: function(order) {
+        sendOrder: function (order) {
             return $http.post("http://nackbutik.azurewebsites.net/api/order", order).then(function (response) {
-                console.log(response.data)
+
             })
 
         }
